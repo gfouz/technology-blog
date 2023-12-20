@@ -8,7 +8,6 @@ import { useContactService } from 'hooks/useContactService';
 import SubmitButton from './SubmitButton';
 
 const defaultMessage = 'Hello Giovanoti. I want to hire you!';
-
 const ContactForm = () => {
   const {
     register,
@@ -19,7 +18,7 @@ const ContactForm = () => {
   });
 
   const { data, error, fetchData } = useContactService();
-  const networkError = error ==! undefined ? error : "";
+  //const networkError = error ==! undefined ? error : "";
 
   const onSubmit: SubmitHandler<InputData> = async (data) => {
     const newdata = { ...data, message: defaultMessage };
@@ -47,8 +46,10 @@ const ContactForm = () => {
           <SubmitButton />
         </div>
       </fieldset>
-      {error ==! undefined ? <p>{String(networkError)}</p> : null }
+      
     </form>
   );
 };
 export default ContactForm;
+
+// This condition will always return 'false' since the types 'string | undefined' and 'boolean' have no overlap.
